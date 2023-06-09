@@ -28,7 +28,7 @@ def search(data):
     #antiqueData:pd.DataFrame = pd.read_table("data\collection.tsv")
     dataAfCorrection = preprocessores.correctWords(data.get('query'))
     dataPD: pd.DataFrame = antiquePreProcess.preprocesseSearchInput(data)
-    global antiquePPData 
+    global antiqueData 
     resultIds = antiqueModel.search(dataPD, antiqueData, data.get('n'))
     resultDict = {
         'reslutDictionary':{
@@ -46,7 +46,7 @@ def searchWE(data):
     #antiqueData:pd.DataFrame = pd.read_table("data\collection.tsv")
     dataAfCorrection = preprocessores.correctWords(data.get('query'))
     dataPD: pd.DataFrame = antiquePreProcess.preprocesseSearchInput(data)
-    global antiquePPData
+    global antiqueData
     resultIds = antiqueWEModel.search(dataPD, antiqueData, data.get('n'))
     resultDict = {
         'reslutDictionary':{

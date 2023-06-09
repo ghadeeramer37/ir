@@ -15,25 +15,19 @@ def initialize():
         return jsonify(success=False)
 
 
-@app.route('/search', methods=['GET'])
-def search():
+@app.route('/search/<int:typeSearch>/<string:query>', methods=['GET'])
+def search(typeSearch,query):
     print('search')
     try:
-        data = request.get_json(force=True)
-        res = coreSys.search(data)
+        if typeSearch==1:
+            res = coreSys.search(query)
+        else:
+            res = coreSys.searchWE(query)
+        #data = request.get_json(force=True)
+        
         return jsonify(res)  
     except:
         raise #TODO handle
-        return jsonify(success=False)
-
-@app.route('/searchWE', methods=['GET'])
-def searchWE():
-    try:
-        data = request.get_json(force=True)
-        res = coreSys.searchWE(data)
-        return jsonify(res)
-    except:
-        return jsonify(success=False)
 
 
 
